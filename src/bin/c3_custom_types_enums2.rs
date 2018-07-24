@@ -11,7 +11,10 @@ enum Work {
     Soldier,
 }
 
-// A common use for enums is to create a linked list
+// A common use for enums is to create a linked list - https://doc.rust-lang.org/1.21.0/std/collections/struct.LinkedList.html
+// A linked list allows pushing and popping elements at either end at constant time
+// It is however, almost always better to use Vec or VecDeque instead of a linked list as
+// array based containers are faster, more memory efficient and make better use of the CPU cache
 use List::*;
 enum List {
     // Cons is a tuple struct that wraps an element and a pointer to the next node
