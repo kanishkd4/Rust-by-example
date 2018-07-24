@@ -7,7 +7,7 @@ fn main() {
     match number {
         1 => println!("One"), // match a single value
         2 | 3 | 5 | 7 | 11 => println!("A prime number"), // match several values
-        13...19 => println!("A teen"), // match an inclusive range. I've only seen the pattern ... in a match. ..+ also works
+        13...19 => println!("A teen"), // match an inclusive range. I've only seen the pattern ... in a match. ..= also works
         _ => println!("Ain't special"), // everything else
     }
     
