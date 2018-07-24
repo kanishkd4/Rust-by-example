@@ -1,6 +1,6 @@
 
 // CASTING
-// Rust provides no implicit conversiion bu explicit conversion can be used using as
+// Rust provides no implicit conversiion but explicit conversion can be used using as
 
 // INFERENCING
 // The type inferencing system looks at the value as well as how the variable is used in the code to infer the type.
