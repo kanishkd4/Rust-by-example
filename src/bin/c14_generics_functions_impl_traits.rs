@@ -29,3 +29,17 @@ fn main() {
 }
 
 
+// FUNCTIONS
+// The same set of rules can be applied to function: a type T becomes a generic if preceeded by a <T>
+struct S(A); // concrete type S that takes concrete type A defined above
+struct SGen<T>(T); // Generic type SGen
+
+fn reg_fn(_s: S) {} // a regular function that takes an argument of type S - not a generic function
+
+fn gen_spec_t(_s: SGen<A>) {} // this is also not a generic as SGen has been given the type A
+fn gen_spec_i32(_s: Sgen<i32>) {} // this is also not a generic
+fn generic<T>(_s: SGen<T>) {} // a generic function
+
+// IMPLEMENTATIONS
+
+
