@@ -1,5 +1,5 @@
 // Generics is the topic of generalizing types and functionalities to broader cases.
-// This is useful for reducing code duplication in many cases and but can all for rather involving syntax.
+// This is useful for reducing code duplication in many cases and but can call for rather involving syntax.
 // Being generic requires taking great care to specify over which types a generic type is actually 
 // considered valid. The simplest and most common case for generics is for type parameters
 // notation: Specify a generic by using angle brackets and upper camel case
