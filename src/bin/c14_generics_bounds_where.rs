@@ -61,6 +61,11 @@ fn main() {
 
     compare_prints(&string);
     compare_types(&array, &vec);
+
+    // WHERE CLAUSES
+    let vec = vec![1, 2, 3];
+
+    vec.print_in_option();
 }
 
 
@@ -93,7 +98,7 @@ fn compare_prints<T: Debug + Display>(t: &T) {
 
 fn compare_types<T: Debug, U: Debug>(t: &T, u: &U) {
     println!("t: `{:?}`", t);
-    println!("u: `{:?}`", u);
+    println!("u: `{:?}`", u);    
 }
 
 // WHERE CLAUSES
@@ -101,5 +106,26 @@ fn compare_types<T: Debug, U: Debug>(t: &T, u: &U) {
 // where clauses can apply bounds to arbitrary types, rather than to type parameters.
 
 // A where clause is useful when specifying generic types and bounds separately is clearer
+// impl <A: TraitB + TraitC, D: TraitE + TraitF> MyTrait<A, D> for YourType {}
 
-impl <A: TraitB + TraitC, D: TraitE + TraitF> MyTrait<A, D> for YourType
+// Expressing bounds with a where clause
+// impl <A, D> MyTrait<A, D> for YourType where 
+//     A: TraitB + TraitC,
+//     D: TraitE + TraitF {}
+
+
+// Sometimes, using a where clause is more expressive than using normal syntax. The impl in this example cannot be 
+// directly expressed 
+trait PrintInOption {
+    fn print_in_option(self);
+}
+
+// Because we would have to express this as `T: Debug` or use another method of indirect approach,
+// this requires a where clause
+impl <T> PrintInOption for T where
+    Option<T>: Debug {
+        fn print_in_option(self) {
+            println!("{:?}", Some(self));
+        }
+    }
+
