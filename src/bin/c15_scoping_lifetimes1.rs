@@ -83,7 +83,6 @@ fn print_multi<'a, 'b>(x: &'a i32, y: &'b i32) {
 fn pass_x<'a, 'b>(x: &'a i32, _: &'b i32) -> &'a i32 { x }
 
 // fn invalid_output<'a>() -> &'a String { &String::from("foo") }
-// fn valid_output_without_lifetimes() -> String { String::from("foo") }
 // invalid_output is invalid: 'a must live longer than the function.
 // &String::from("foo") would create a string followed by a reference. The data is dropped upon exiting the scope
 // leaving a reference to invalid data to be returned.
