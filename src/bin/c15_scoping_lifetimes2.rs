@@ -52,4 +52,7 @@ enum Either<'a> {
 // Just like generic types can be bounded, lifetimes(also generic) can use bounds.
 // The : character has a different meaning here but + is the same
 // 1. `T: 'a`: All references in T must outlive lifetime 'a
-// 2. `T: Trait + 'a`: Type T 
+// 2. `T: Trait + 'a`: Type T
+use std::fmt::Debug; // trait to bound with
+struct Ref<'a, T: 'a>(&'a T); // Ref contains a reference to a generic type `T` that has an unknown lifetime 'a. `T` is bounded
+// such that any references in T must outlive 'a. Additionally, the lifetime of Ref may not exceed 'a
