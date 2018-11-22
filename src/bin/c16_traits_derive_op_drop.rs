@@ -37,6 +37,72 @@ fn main() {
             "bigger"
         };
     println!("One foot is {} than one meter", cmp);
+
+    // OPERATOR OVERLOADING
+    println!("Foo + Bar =  {:?}", Foo + Bar);
+    println!("Bar + Foo =  {:?}", Bar + Foo);
+
+    // DROP
+    let _a = Dropable { name: "a" };
+    {
+        let _b = Dropable { name: "b" };
+        {
+            let _c = Dropable { name: "c" };
+            let _d = Dropable { name: "d" };
+            println!("Exiting block B");
+        }
+        println!("Just exited block B");
+        println!("Exiting block A");
+    }
+    println!("Just exited block A");
+
+    // drop(_a); // The variable can also be manually dropped; otherwise will get dropped at the end of the main function
+    println!("End of main function");
 }
 
 // OPERATOR OVERLOADING
+// Many operators can be overloaded via traits. Some operators can be used to accomplish different tasks based on their input arguments.
+// This is possible because operators are syntactic sugar for method calls. The + operator in a + b calls the add method (a.add(b))
+// The add method is a part of the Add trait. Hence, the + operator can be used by any implementor of the Add trait.
+// A list of traits such as Add, that overload operators can be found in core::ops
+use std::ops;
+struct Foo;
+struct Bar;
+
+#[derive(Debug)]
+struct FooBar;
+
+#[derive(Debug)]
+struct BarFoo;
+
+impl ops::Add<Bar> for Foo { // std::ops::Add trait is used to specify the functionality of `+`
+    type Output = FooBar;
+    fn add(self, _rhs: Bar) -> FooBar {
+        println!("> Foo.add(Bar) was called");
+        FooBar
+    }
+}
+
+impl ops::Add<Foo> for Bar {
+    type Output = BarFoo;
+    fn add(self, _rhs: Foo) -> BarFoo {
+        println!("> Bar.add(Foo) was called");
+        BarFoo
+    }
+}
+
+// DROP
+// The Drop trait has only one method: drop, which is called automatically when an object goes out of scope.
+// The main use of the Drop trait is to free the resource that the implementor instance owns.
+// Some examples of the types that implement the Drop trait are Box, Vec, String, File, and Process. It can also be manually 
+// implemented for custom types. The example adds a print to console to the drop function to announce when it's called.
+
+struct Dropable {
+    name: &'static str,
+}
+
+impl Drop for Dropable {
+    fn drop(&mut self) {
+        println!(">Dropping {}", self.name);
+    }
+}
