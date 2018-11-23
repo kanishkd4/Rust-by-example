@@ -3,20 +3,20 @@
 use std::mem;
 
 fn main() {
-    let logical: bool = true;
+    let _logical: bool = true;
 
-    let a_float: f64 = 1.0; // regular annotation
-    let an_integer = 5i32; // suffix annotation
+    let _a_float: f64 = 1.0; // regular annotation
+    let _an_integer = 5i32; // suffix annotation
 
-    let default_float = 64.0; // f64
-    let default_integer = 32; // i32
+    let _default_float = 64.0; // f64
+    let _default_integer = 32; // i32
 
     // while a mutable type's value can be changed, the type of the variable can't be
-    let mut integer_new: i32 = 32;
+    let _integer_new: i32 = 32;
     // integer_new: i64 = 64;  // this will not compile
 
     // variables can be overwritten by shadowing
-    let integer_new: i64 = 64;
+    let _integer_new: i64 = 64;
 
     println!("{}", 0.000001 == 0.000_001); // _ can be used in numeric literals to improve readability
 

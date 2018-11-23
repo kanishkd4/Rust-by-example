@@ -36,7 +36,7 @@ fn main() {
 
     // _box2 is destroyed here
 
-    let x = ToDrop;
+    let _x = ToDrop;
     println!("Made a ToDrop");
 
     // OWNERSHIP AND MOVES

@@ -30,7 +30,7 @@ fn main() {
 
 
     // DIVERGING functions
-    let a: () = some_fn();
+    let _a: () = some_fn();
     println!("some_fn() returns and you can see this line");
 
     // let x: ! = panic!("This call never returns");

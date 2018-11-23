@@ -5,7 +5,7 @@
 // notation: Specify a generic by using angle brackets and upper camel case
 
 // example: a generic function named foo that takes an argument T of any type
-fn foo<T>(arg: T) {} // becuase T has been specified as a generic type parameter using <T>, 
+fn foo<T>(_arg: T) {} // becuase T has been specified as a generic type parameter using <T>, 
 // it is considered generic when used here as arg: T, even if T has been previously defined as a struct
 
 struct A; // a concrete type

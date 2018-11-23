@@ -69,7 +69,7 @@ fn main() {
     use Work::*; 
 
     let status = Poor; // equivalent to Status::Poor
-    let work = Civilian; // equivalent to Work::Civilian
+    let _work = Civilian; // equivalent to Work::Civilian
 
     match status {
         // we don't need scoping due to the explicit `use` above
