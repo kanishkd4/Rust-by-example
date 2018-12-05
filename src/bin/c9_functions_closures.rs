@@ -1,9 +1,12 @@
 // Closures in rust, also called lambda expressions are functions that can capture the enclosing environment
+// e.g. `|val| val + x` is a closure that captures the x variable
 // they are good for on the fly usage. Calling a closure is like calling a function
 // Howver, both input and return types can be inferred and the input variable names must be provided
 
+// Other characteristics
 // use || instead of () around input variables.
 // {} is optional for single expressions, mandatory otherwise.
+// the ability to capture outer environment variables
 
 fn main() {
     // incremement via functions and closures
@@ -23,6 +26,7 @@ fn main() {
 
     // CAPTURING
     // closures can capture and move variables without annotation and flexibly adapt to the use case
+    // closures can capture variables by reference, mutable reference or by value (in that order of preference)
     use std::mem;
     let color = "green";
     let print = || println!("`color`: {}", color); // the closure borrows color and stores the borrow and the closure
@@ -35,7 +39,7 @@ fn main() {
     let mut inc = || { // a mut is required on inc because a `&mut` is stored inside. Calling the closure mutates it
         count += 1;
         println!("`count`: {}", count);
-    };
+    }; // count is mutably borrowed here in the closure definition
 
     inc();
     inc();

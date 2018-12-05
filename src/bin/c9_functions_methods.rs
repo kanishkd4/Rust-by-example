@@ -38,7 +38,7 @@ fn fizzbuzz(n: u32) -> () {
     }
 }
 
-// when an function returns (), the type can be omitted from the signature
+// when a function returns (), the type can be omitted from the signature
 fn fizzbuzz_to(n: u32) {
     for n in 1..n+1 {
         fizzbuzz(n);
